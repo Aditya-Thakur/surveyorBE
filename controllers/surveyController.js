@@ -73,7 +73,15 @@ function addSurvey(req,res) {
 router.get('/getSurvey:surveyId', (req,res) => {
     survey.findOne( {id: req.params.surveyId}, function (err, docs) {
         if(!err) {
-            res.json(docs);
+            if( (docs.validTill > new Date()) && (docs.active)) {
+                res.json(docs);
+            } else {
+                var response = {
+                    status: 202,
+                    message: "Either survey link is expired or inactive."
+                }
+                res.json(response);
+            }
         } else {
             console.log("Error found in fetching survey: " + err);
             var response = {
