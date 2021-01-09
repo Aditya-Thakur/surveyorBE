@@ -8,7 +8,7 @@ var responseSchema = new mongoose.Schema({
         type: Date
     },
     answer: {
-        type: answerList
+        type: Array
     }
 }); 
 
@@ -20,7 +20,7 @@ var answerList = new mongoose.Schema({
         type: String
     },
     optionList : {
-        type: option
+        type: Array
     }
     
 }); 

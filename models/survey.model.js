@@ -14,7 +14,7 @@ var surveySchema = new mongoose.Schema({
         type: Boolean
     },
     question: {
-        type: questionList
+        type: Array
     }
 }); 
 
@@ -26,7 +26,7 @@ var questionList = new mongoose.Schema({
         type: Date
     },
     optionList : {
-        type: option
+        type: Array
     }
     
 }); 
