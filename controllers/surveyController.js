@@ -4,7 +4,7 @@ const survey = mongoose.model('Survey');
 var router = express.Router();
 
 router.post('/fetchMySurveys', (req,res) => {
-    user.findOne( { createdBy: req.body.createdBy }, function(err, docs) {
+    survey.findOne( { createdBy: req.body.createdBy }, function(err, docs) {
         if(!err) {
             res.json(docs);
         } else {
