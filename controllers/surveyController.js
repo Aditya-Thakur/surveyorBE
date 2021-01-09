@@ -92,3 +92,4 @@ router.get('/getSurvey:surveyId', (req,res) => {
         }
     });
 });
+module.exports = router; 
