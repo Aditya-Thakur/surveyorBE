@@ -44,7 +44,7 @@ function insertUser(req, res){
             }
             res.json(response);
         } else {
-            console.log('Error during ECC record insertion: ' + err);
+            console.log('Error during adding user: ' + err);
         }
     });
 }
