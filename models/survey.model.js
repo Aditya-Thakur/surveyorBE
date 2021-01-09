@@ -14,26 +14,25 @@ var surveySchema = new mongoose.Schema({
         type: Boolean
     },
     question: {
-        type: Array
-    }
-}); 
-
-var questionList = new mongoose.Schema({
-    questionType : {
-        type: String
-    },
-    questionContent : {
-        type: Date
-    },
-    optionList : {
-        type: Array
-    }
-    
-}); 
-
-var option = new mongoose.Schema({
-    value : {
-        type: String
+        type: [
+            {
+                questionType : {
+                    type: String
+                },
+                questionContent : {
+                    type: Date
+                },
+                optionList : {
+                    type: [
+                        {
+                            value : {
+                                type: String
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
     }
 }); 
 

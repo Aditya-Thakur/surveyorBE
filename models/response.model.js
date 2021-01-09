@@ -8,11 +8,8 @@ var responseSchema = new mongoose.Schema({
         type: Date
     },
     answer: {
-        type: Array
-    }
-}); 
-
-var answerList = new mongoose.Schema({
+        type: [
+{
     questionContent : {
         type: Date
     },
@@ -20,14 +17,16 @@ var answerList = new mongoose.Schema({
         type: String
     },
     optionList : {
-        type: Array
+        type: [
+            {
+                value : {
+                    type: String
+                }
+            }
+        ]
     }
-    
-}); 
-
-var option = new mongoose.Schema({
-    value : {
-        type: String
+}
+        ]
     }
 }); 
 
