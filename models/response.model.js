@@ -11,7 +11,7 @@ var responseSchema = new mongoose.Schema({
         type: [
 {
     questionContent : {
-        type: Date
+        type: String
     },
     userResponse : {
         type: String
