@@ -69,3 +69,18 @@ function addSurvey(req,res) {
         }
     });
 }
+
+router.get('/getSurvey:surveyId', (req,res) => {
+    survey.findOne( {id: req.params.surveyId}, function (err, docs) {
+        if(!err) {
+            res.json(docs);
+        } else {
+            console.log("Error found in fetching survey: " + err);
+            var response = {
+                status: 201,
+                message: "Could not find your survey"
+            }
+            res.json(response);
+        }
+    });
+});
