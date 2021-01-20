@@ -19,6 +19,7 @@ router.post('/addResponse', (req,res) => {
 });
 
 function addResponse(req,res) {
+    console.log(req.body);
     var newResponse = new response(); 
     newResponse.surveyId = req.body.surveyId;
     newResponse.submittedOn = req.body.submittedOn;
