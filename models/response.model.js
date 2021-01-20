@@ -10,20 +10,17 @@ var responseSchema = new mongoose.Schema({
     answer: {
         type: [
 {
-    questionContent : {
+    questionId : {
+        type: String
+    },
+    questionType : {
         type: String
     },
     userResponse : {
         type: String
     },
     optionList : {
-        type: [
-            {
-                value : {
-                    type: String
-                }
-            }
-        ]
+        type: [String]
     }
 }
         ]
