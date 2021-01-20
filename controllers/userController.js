@@ -50,8 +50,11 @@ function insertUser(req, res){
 }
 
 function fetchUser(req, res) {
+    console.log('login');
+    console.log(req.body);
     user.findOne( { email: req.body.email, password: req.body.password }, function(err, docs) {
             if(!err){
+                console.log(docs);
             res.json(docs);
         } else {
                 console.log('Error in retrieving user: ' + err);
