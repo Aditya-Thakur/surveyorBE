@@ -2,10 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const survey = mongoose.model('Survey');
 var router = express.Router();
+const {ObjectId} = require('mongodb');
 
 router.post('/fetchMySurveys', (req,res) => {
-    survey.findOne( { createdBy: req.body.createdBy }, function(err, docs) {
+    console.log(req.body);
+    survey.find( { createdBy: req.body.createdBy }, function(err, docs) {
         if(!err) {
+            console.log(docs);
             res.json(docs);
         } else {
             console.log('Error in fetching surveys: ' + err);
@@ -62,7 +65,7 @@ function addSurvey(req,res) {
                 status: 100,
                 message: "Survey Created",
                 surveyCode: docs.id
-            }
+        }
             res.json(response);
         } else {
             console.log('Error during Survey record insertion: ' + err);
@@ -71,7 +74,9 @@ function addSurvey(req,res) {
 }
 
 router.get('/getSurvey:surveyId', (req,res) => {
-    survey.findOne( {id: req.params.surveyId}, function (err, docs) {
+    console.log(req.params.surveyId);
+    var id = mongoose.Types.ObjectId(req.params.surveyId)
+    survey.findOne( {_id: id}, function (err, docs) {
         if(!err) {
             if( (docs.validTill > new Date()) && (docs.active)) {
                 res.json(docs);
