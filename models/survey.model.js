@@ -23,13 +23,7 @@ var surveySchema = new mongoose.Schema({
                     type: String
                 },
                 optionList : {
-                    type: [
-                        {
-                            value : {
-                                type: String
-                            }
-                        }
-                    ]
+                    type: [String]
                 }
             }
         ]
