@@ -4,8 +4,9 @@ const response = mongoose.model('Response');
 var router = express.Router();
 
 
-router.post('/fetchMyResponses', (req,res) => {
-    response.find( { surveyId: req.body.surveyId }, function(err, docs) {
+router.get('/fetchResponses:surveyId', (req,res) => {
+    console.log(req.params.surveyId);
+    response.find( { surveyId: req.params.surveyId }, function(err, docs) {
         if(!err) {
             res.json(docs);
         } else {
