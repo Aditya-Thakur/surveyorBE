@@ -1,9 +1,5 @@
 {
-    "name": "surveyor-be",
     "version": 2,
-    "env": {
-      "MONGODB_URI": "@my-mongodb-uri"
-    },
     "builds": [
         {
             "src": "./server.js",
@@ -14,6 +10,10 @@
         {
             "src": "/(.*)",
             "dest": "/"
-        }
+        },
+        {
+            "src": "/",
+            "dest": "ui/build/index.html"
+          }
     ]
   }
