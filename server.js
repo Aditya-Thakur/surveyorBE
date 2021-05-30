@@ -9,11 +9,12 @@ const surveyController = require('./controllers/surveyController');
 const responseController = require('./controllers/responseController'); 
 var app = express();
 app.use(bodyParser.json())
-app.listen(3000, () => {
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
     console.log('Express server started at port: 3000');
 });
 app.use(cors());
 app.use('/user', userController); 
 app.use('/survey', surveyController);
 app.use('/response', responseController); 
- 
+app.get('/', (req, res) => res.send('Home Page Route'));

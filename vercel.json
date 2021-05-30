@@ -3,5 +3,17 @@
     "version": 2,
     "env": {
       "MONGODB_URI": "@my-mongodb-uri"
-    }
+    },
+    "builds": [
+        {
+            "src": "./server.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/"
+        }
+    ]
   }
