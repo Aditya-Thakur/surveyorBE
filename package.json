@@ -1,8 +1,8 @@
 {
-  "name": "ecc",
+  "name": "surveyor-be",
   "version": "1.0.0",
-  "description": "Dashboard for Employee Care Center",
-  "main": "server.js",
+  "description": "Dashboard for Surveyor BE",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
