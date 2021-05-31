@@ -8,35 +8,11 @@
                     "value": "*"
                 }
             ]
-        },
-        {
-            "source": "/user/(.*)",
-            "headers": [
-                {
-                    "key": "access-control-allow-origin",
-                    "value": "*"
-                }
-            ]
-        },
-        {
-            "source": "/survey/(.*)",
-            "headers": [
-                {
-                    "key": "access-control-allow-origin",
-                    "value": "*"
-                }
-            ]
-        },
-        {
-            "source": "/response/(.*)",
-            "headers": [
-                {
-                    "key": "access-control-allow-origin",
-                    "value": "*"
-                }
-            ]
         }
     ],
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/" }
+      ],
     "builds": [
         {
             "src": "./index.js",
