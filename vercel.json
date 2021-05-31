@@ -8,6 +8,39 @@
                     "value": "*"
                 }
             ]
+        },
+        {
+            "source": "/user/(.*)",
+            "headers": [
+                {
+                    "key": "access-control-allow-origin",
+                    "value": "*"
+                }
+            ]
+        },
+        {
+            "source": "/survey/(.*)",
+            "headers": [
+                {
+                    "key": "access-control-allow-origin",
+                    "value": "*"
+                }
+            ]
+        },
+        {
+            "source": "/response/(.*)",
+            "headers": [
+                {
+                    "key": "access-control-allow-origin",
+                    "value": "*"
+                }
+            ]
+        }
+    ],
+    "builds": [
+        {
+            "src": "./index.js",
+            "use": "@vercel/node"
         }
     ]
 }
