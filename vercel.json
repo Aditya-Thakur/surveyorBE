@@ -6,16 +6,6 @@
             "use": "@vercel/node"
         }
     ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        },
-        {
-            "src": "/",
-            "dest": "ui/build/index.html"
-          }
-    ],
     "headers": [
         {
           "source": "/(.*)",
