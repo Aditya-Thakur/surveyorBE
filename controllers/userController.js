@@ -61,15 +61,16 @@ function fetchUser(req, res) {
     console.log(req.body);
     user.findOne( { email: req.body.email}, function(err, docs) {
             if(!err){
-            const cmp = await bcrypt.compare(req.body.password, docs.password);
-            if(cmp) {
-                res.json(docs);
-            } else {
-                console.log('Wrong Password: ' + err);
-                res.json({
-                    errorMessage = "Wrong Password. Try again."
-                });
-            }
+            bcrypt.comparePassword(req.body.password, docs.password, (err, cmp) => {
+                if(cmp) {
+                    res.json(docs);
+                } else {
+                    console.log('Wrong Password: ' + err);
+                    res.json({
+                        errorMessage = "Wrong Password. Try again."
+                    });
+                }
+            })
         } else {
                 console.log('Error in retrieving user: ' + err);
                 res.json({
