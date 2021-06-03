@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const user = mongoose.model('User');
 var router = express.Router();
+const bcrypt = require('../utils/secure');
 router.get('/', (req, res) => {
     res.json('just checking user')
 });
@@ -32,7 +33,13 @@ function insertUser(req, res){
     var newUser = new user(); 
     newUser.fullName = req.body.fullName;
     newUser.email = req.body.email;
-    newUser.password = req.body.password;
+    bcrypt.cryptPassword(req.body.password, (err, hash) => {
+        if(!err) {
+            newUser.password = hash;
+        } else {
+            console.log(err);
+        }
+    })
     newUser.gender = req.body.gender;
     newUser.dob = req.body.dob;
     newUser.mobileNumber = req.body.mobileNumber;
@@ -52,12 +59,22 @@ function insertUser(req, res){
 function fetchUser(req, res) {
     console.log('login');
     console.log(req.body);
-    user.findOne( { email: req.body.email, password: req.body.password }, function(err, docs) {
+    user.findOne( { email: req.body.email}, function(err, docs) {
             if(!err){
-                console.log(docs);
-            res.json(docs);
+            const cmp = await bcrypt.compare(req.body.password, docs.password);
+            if(cmp) {
+                res.json(docs);
+            } else {
+                console.log('Wrong Password: ' + err);
+                res.json({
+                    errorMessage = "Wrong Password. Try again."
+                });
+            }
         } else {
                 console.log('Error in retrieving user: ' + err);
+                res.json({
+                    errorMessage = "No user found. Try again."
+                });
             }
         });
 }
