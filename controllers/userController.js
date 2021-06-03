@@ -67,14 +67,14 @@ function fetchUser(req, res) {
                 } else {
                     console.log('Wrong Password: ' + err);
                     res.json({
-                        errorMessage = "Wrong Password. Try again."
+                        errorMessage: "Wrong Password. Try again."
                     });
                 }
             })
         } else {
                 console.log('Error in retrieving user: ' + err);
                 res.json({
-                    errorMessage = "No user found. Try again."
+                    errorMessage: "No user found. Try again."
                 });
             }
         });
