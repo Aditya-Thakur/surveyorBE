@@ -36,24 +36,24 @@ function insertUser(req, res){
     bcrypt.cryptPassword(req.body.password, (err, hash) => {
         if(!err) {
             newUser.password = hash;
+            newUser.gender = req.body.gender;
+            newUser.dob = req.body.dob;
+            newUser.mobileNumber = req.body.mobileNumber;
+            newUser.save((err, doc) => {
+                if(!err){
+                    var response = {
+                        status: 100,
+                        message: "Registered successfully."
+                    }
+                    res.json(response);
+                } else {
+                    console.log('Error during adding user: ' + err);
+                }
+            });
         } else {
             console.log(err);
         }
     })
-    newUser.gender = req.body.gender;
-    newUser.dob = req.body.dob;
-    newUser.mobileNumber = req.body.mobileNumber;
-    newUser.save((err, doc) => {
-        if(!err){
-            var response = {
-                status: 100,
-                message: "Registered successfully."
-            }
-            res.json(response);
-        } else {
-            console.log('Error during adding user: ' + err);
-        }
-    });
 }
 
 function fetchUser(req, res) {
