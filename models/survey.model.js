@@ -7,11 +7,20 @@ var surveySchema = new mongoose.Schema({
     createdOn : {
         type: Date
     },
+    modifiedOn : {
+        type: Date
+    },
     validTill : {
         type: Date
     },
     active : {
         type: Boolean
+    },
+    surveyName : {
+        type : String
+    },
+    surveyDescription : {
+        type : String
     },
     question: {
         type: [

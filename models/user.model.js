@@ -18,6 +18,9 @@ var userSchema = new mongoose.Schema({
     },
     mobileNumber : {
         type: String
+    },
+    signUpType: {
+        type: String
     }
     
 }); 
