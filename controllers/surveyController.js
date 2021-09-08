@@ -20,6 +20,7 @@ router.post('/changeStatus', (req,res) => {
     survey.findOne({ id : req.body.id }, function(err, docs) {
         if(!err){
         docs.active = req.body.active;
+        docs.modifiedOn = new Date();
         docs.save(function(err) {
             if(!err){
                 var response = {
@@ -54,6 +55,8 @@ router.post('/createSurvey', (req,res) => {
 
 function addSurvey(req,res) {
     var newSurvey = new survey(); 
+    newSurvey.surveyName = req.body.surveyName;
+    newSurvey.surveyDescription = req.body.surveyDescription;
     newSurvey.createdBy = req.body.createdBy;
     newSurvey.createdOn = req.body.createdOn;
     newSurvey.validTill = req.body.validTill;

@@ -22,6 +22,7 @@ router.post('/addResponse', (req,res) => {
 function addResponse(req,res) {
     console.log(req.body);
     var newResponse = new response(); 
+    newResponse.userIP = req.body.userIP;
     newResponse.surveyId = req.body.surveyId;
     newResponse.submittedOn = req.body.submittedOn;
     newResponse.answer = req.body.answer;

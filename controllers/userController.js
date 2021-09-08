@@ -31,6 +31,7 @@ router.post('/login', (req, res) => {
 });
 function insertUser(req, res){
     var newUser = new user(); 
+    newUser.signUpType = req.body.signUpType;
     newUser.fullName = req.body.fullName;
     newUser.email = req.body.email;
     bcrypt.cryptPassword(req.body.password, (err, hash) => {
@@ -57,8 +58,6 @@ function insertUser(req, res){
 }
 
 function fetchUser(req, res) {
-    console.log('login');
-    console.log(req.body);
     user.findOne( { email: req.body.email}, function(err, docs) {
             if(!err){
             bcrypt.comparePassword(req.body.password, docs.password, (err, cmp) => {
