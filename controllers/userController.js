@@ -62,7 +62,9 @@ function fetchUser(req, res) {
             if(!err){
             bcrypt.comparePassword(req.body.password, docs.password, (err, cmp) => {
                 if(cmp) {
-                    res.json(docs);
+                    const userRes = docs;
+                    delete userRes.password;
+                    res.json(userRes);
                 } else {
                     console.log('Wrong Password: ' + err);
                     res.json({
